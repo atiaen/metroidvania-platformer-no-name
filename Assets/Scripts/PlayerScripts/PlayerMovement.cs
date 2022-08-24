@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
         playerBody = GetComponent<Rigidbody2D>();
         player = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
-        // Enemy.knockBackEvent += KnockBack;
 
     }
 
@@ -71,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    //TODO rewrite to be a coroutine
     public static IEnumerator KnockBack(Vector2 direction,float knockDistance,Rigidbody2D playerBody,PlayerMovement player)
     {
         player.isHit = true;

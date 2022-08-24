@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934933188d4807f4fa312887cca8dbef, type: 3}
+  m_Name: Bomb
+  m_EditorClassIdentifier: 
+  itemType: 2
+  potionType: 0
+  healAmount: 0
+  damageAmount: 0
+  itemCount: 0
+  isStackable: 1
+  itemIcon: {fileID: -3095282964131620661, guid: 2372295d9cc01b6428127403770858d4, type: 3}
+  maxItemCount: 0

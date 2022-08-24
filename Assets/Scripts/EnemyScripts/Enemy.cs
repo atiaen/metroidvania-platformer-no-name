@@ -8,7 +8,6 @@ using YounGenTech.HealthScript;
 public class Enemy : MonoBehaviour
 {
     public static event Action attackEvent;
-    public static event Action<Vector2> knockBackEvent;
     public float mMovementSpeed = 3.0f;
     public bool bIsGoingRight = true;
 
@@ -22,12 +21,12 @@ public class Enemy : MonoBehaviour
 
     public float groundDistance = 1f;
     public Rigidbody2D body;
-    private Animator animator;
+    public Animator animator;
     public Health health;
 
     public Transform target;
 
-    private SpriteRenderer _mSpriteRenderer;
+    public SpriteRenderer _mSpriteRenderer;
 
     float distanceBtw;
 
@@ -52,7 +51,6 @@ public class Enemy : MonoBehaviour
             if (distanceBtw <= 0.35)
             {
                 attackEvent?.Invoke();
-                knockBackEvent?.Invoke(direction);
             }
 
             CheckForWalls();
@@ -69,13 +67,13 @@ public class Enemy : MonoBehaviour
         body.velocity = new Vector2(directionTranslation.x * mMovementSpeed, body.velocity.y);
     }
 
-    private void CheckForWalls()
+    public void CheckForWalls()
     {
         Vector3 raycastDirection = (bIsGoingRight) ? Vector3.right : Vector3.left;
-        RaycastHit2D wallhit = Physics2D.Raycast(wallCheck.position + raycastDirection * mRaycastingDistance, raycastDirection, 0.075f);
-        RaycastHit2D groundhit = Physics2D.Raycast(groundCheck.position + Vector3.down * groundDistance, Vector2.down, 0.05f);
-        Debug.DrawRay(wallCheck.position + raycastDirection * mRaycastingDistance, raycastDirection, Color.red);
-        Debug.DrawRay(groundCheck.position + Vector3.down * groundDistance, Vector2.down * 0.05f, Color.red);
+        RaycastHit2D wallhit = Physics2D.Raycast(wallCheck.position + raycastDirection * mRaycastingDistance, raycastDirection, mRaycastingDistance);
+        RaycastHit2D groundhit = Physics2D.Raycast(groundCheck.position + Vector3.down * groundDistance, Vector2.down, groundDistance);
+        Debug.DrawRay(wallCheck.position + raycastDirection, raycastDirection, Color.red);
+        Debug.DrawRay(groundCheck.position + Vector3.down * groundDistance, Vector2.down, Color.red);
         if (wallhit.collider != null && groundhit.collider != null)
         {
             if (wallhit.transform.tag == "Ground" && groundhit.transform.tag == "Ground")
@@ -108,7 +106,7 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("isHit");
     }
 
-    //   private void OnDrawGizmos()
+    //   public void OnDrawGizmos()
     // {
     //     Gizmos.color = Color.red;
     //     Ray ray = new Ray(groundCheck.position, -groundCheck.up);
