@@ -57,14 +57,12 @@ public class ActionEnemy : Enemy
             _mSpriteRenderer.flipX = false;
             body.velocity = new Vector2(direction * mMovementSpeed, body.velocity.y);
             animator.SetFloat("speed", body.velocity.magnitude);
-            Debug.Log(body.velocity.magnitude);
         }
         else if (direction < 0)
         {
             _mSpriteRenderer.flipX = true;
             body.velocity = new Vector2(direction * mMovementSpeed, body.velocity.y);
             animator.SetFloat("speed", body.velocity.magnitude);
-            Debug.Log(body.velocity.magnitude);
 
         }
         else

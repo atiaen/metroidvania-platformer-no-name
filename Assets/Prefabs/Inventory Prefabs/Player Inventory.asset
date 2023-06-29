@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e5dd404fb6530489e1a2fee56c3be3, type: 3}
   m_Name: Player Inventory
   m_EditorClassIdentifier: 
-  coins: 0
+  coins: 24
   maxCoins: 1000
-  Items: []
+  currSelectItem: {fileID: 11400000, guid: f5f64a4bcf3de574081e3f848aa5dbc3, type: 2}
+  Items:
+  - {fileID: 11400000, guid: f5f64a4bcf3de574081e3f848aa5dbc3, type: 2}
+  - {fileID: 11400000, guid: 3a0a07f576667e04d8049dcdf0414e11, type: 2}

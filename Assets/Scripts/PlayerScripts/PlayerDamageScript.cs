@@ -15,6 +15,7 @@ public class PlayerDamageScript : MonoBehaviour
     void Start()
     {
         PlayerMovement.attackEvent += Damage;
+        InventoryHolder.healEvent += Heal;
 
     }
 
@@ -38,6 +39,15 @@ public class PlayerDamageScript : MonoBehaviour
 
 
         }
+    }
+
+    public void Heal(float healAmount)
+    {
+        Health playerHealth = gameObject.GetComponent<Health>();
+        if(playerHealth){
+            playerHealth.Heal(new HealthEvent(gameObject,healAmount));
+        }
+
     }
 
     private void OnDrawGizmos()

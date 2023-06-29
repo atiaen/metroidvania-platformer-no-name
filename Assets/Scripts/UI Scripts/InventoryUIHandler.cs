@@ -8,11 +8,13 @@ public class InventoryUIHandler : MonoBehaviour
 {
 
     public TMP_Text coinsText;
+    public TMP_Text itemCountText;
     public Image selectedItemImage;
     void Awake()
     {
         PickupItem.coinsEvent += UpdateCoins;
         InventoryHolder.coinsEventHolder += UpdateCoins;
+        InventoryHolder.changeIconEvent += ShowInvItem;
 
     }
 
@@ -29,7 +31,14 @@ public class InventoryUIHandler : MonoBehaviour
 
     public void UpdateCoins(int amount)
     {
-        Debug.Log(amount);
         coinsText.text = amount.ToString();
+    }
+
+    public void ShowInvItem(Sprite itemImg, int itemCount)
+    {
+        itemCountText.enabled = true;
+        itemCountText.text =  itemCount.ToString();
+        selectedItemImage.sprite = itemImg;
+        selectedItemImage.enabled = true;
     }
 }

@@ -25,7 +25,6 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void WalkAnimation(float run)
     {
-
         playerAnimator.SetFloat("running", run);
     }
 

@@ -86,7 +86,6 @@ public class PlayerMovement : MonoBehaviour
     }
     public void HandleInput()
     {
-        // bool IsGrounded() = Physics2D.Raycast(groundCheck.position, -groundCheck.up, groundDistance, groundMask);
         float horizontal = Input.GetAxis("Horizontal");
         Vector2 movement;
         movementVelocity = 0;
@@ -95,19 +94,25 @@ public class PlayerMovement : MonoBehaviour
             player.flipX = false;
             movementVelocity = movementSpeed * horizontal;
 
-            if (IsGrounded())
-            {
-                walkEvent?.Invoke(horizontal);
-            }
+            // if (IsGrounded())
+            // {
+            //     walkEvent?.Invoke(horizontal);
+            // }
         }
-        else if (horizontal < 0)
+
+        if (horizontal < 0)
         {
             player.flipX = true;
             movementVelocity = -movementSpeed * -horizontal;
-            if (IsGrounded())
-            {
-                walkEvent?.Invoke(-horizontal);
-            }
+            // if (IsGrounded())
+            // {
+            //     walkEvent?.Invoke(-horizontal);
+            // }
+        }
+        if(IsGrounded() && horizontal > 0 || horizontal < 0){
+            walkEvent?.Invoke(1);
+        }else{
+            walkEvent?.Invoke(0);
         }
 
         if (IsGrounded())

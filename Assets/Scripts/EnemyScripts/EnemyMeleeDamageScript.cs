@@ -15,9 +15,19 @@ public class EnemyMeleeDamageScript : MonoBehaviour
     void Start()
     {
         Enemy.attackEvent += Damage;
+        WaypointEnemy.attackEvent += Damage;
 
     }
 
+    void OnDisable(){
+        WaypointEnemy.attackEvent -= Damage;
+    }
+
+    public void onDestroy()
+    {
+        WaypointEnemy.attackEvent -= Damage;
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -36,7 +46,7 @@ public class EnemyMeleeDamageScript : MonoBehaviour
             {
                 player = colliders.gameObject.GetComponentInParent<PlayerMovement>();
                 Rigidbody2D body = colliders.GetComponentInParent<Rigidbody2D>();
-                StartCoroutine(PlayerMovement.KnockBack(-direction,knockDistance,body,player));
+                StartCoroutine(PlayerMovement.KnockBack(-direction, knockDistance, body, player));
                 Health health = colliders.gameObject.GetComponentInParent<Health>();
                 if (health)
                 {

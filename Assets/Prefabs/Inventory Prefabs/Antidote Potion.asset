@@ -16,7 +16,7 @@ MonoBehaviour:
   potionType: 1
   healAmount: 0
   damageAmount: 0
-  itemCount: 0
+  itemCount: 4
   isStackable: 1
   itemIcon: {fileID: 21300000, guid: e06ff92aa0e223743bd750be468747d9, type: 3}
   maxItemCount: 10
